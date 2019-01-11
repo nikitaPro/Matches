@@ -16,11 +16,14 @@ public class MatchesCalc {
     }
     
     protected int matchesMxM(int m) {
-        if (m > 0) {
-            // (m^2 * 4) - (shared matches)
-            return m * m * MATCHES_IN_SQUARE - matchesMxM(m - 1); 
-        } else {
-            return 0;
+        int res = 0;
+        int shared = res;
+        for (int i = 1; i < m; i++) {
+            res = i * i * MATCHES_IN_SQUARE - shared;
+            shared = res;
         }
+        // (m^2 * 4) - (shared matches)
+        res = m * m * MATCHES_IN_SQUARE - shared;
+        return res;
     }
 }

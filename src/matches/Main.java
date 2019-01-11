@@ -5,8 +5,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.print("Enter n = ");
+        System.out.print("Enter number of squares (n) = ");
         Scanner input = new Scanner(System.in);
+        if (!input.hasNextInt()) {
+            System.out.println("Sorry, n must be an integer and (1 <= n <= 10^9)");
+            System.exit(2);
+        }
         int n = input.nextInt();
         input.close();
         if (n < 1 || n > 1000000000) {
